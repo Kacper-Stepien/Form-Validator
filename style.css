@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+:root {
+    --body-background-color: #f1f1f1;
+    --form-background: #fff;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --create-account-btn-color: #42b72a;
+    --success-color: #42b72a;
+    --error-color: #ef233c;
+    --header-color-text: #1977f3;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: var(--body-background-color);
+    font-size: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-form {
+    background-color: var(--form-background);
+    padding: 5rem 10rem;
+    width: 40vw;
+    border-radius: 12px;
+    box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.register-form h1 {
+    color: var(--header-color-text);
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.register-form h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+}
+
+.form-element {
+    margin-bottom: 1.2rem;
+}
+
+.form-element input {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    width: 100%;
+    border: 2px solid #6c757d;
+    border-radius: 12px;
+    outline: none;
+}
+
+.form-element input:focus {
+    border: 2px solid var(--header-color-text);
+}
+
+
+.form-element h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    margin-top: 2px;
+    margin-left: 5px;
+    color: var(--error-color);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.date-of-birth-choice {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.date-of-birth-choice select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #6c757d;
+    border-radius: 12px;
+    outline: none;
+}
+
+.date-of-birth-choice select:focus,
+.date-of-birth-choice select:checked {
+    border: 2px solid var(--header-color-text);
+}
+
+.date-of-birth-choice select:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.gender-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gender-button {
+    font-size: 1.6rem;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid #6c757d;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gender-button:last-child {
+    margin-left: 1rem;
+}
+
+.gender-button input {
+    width: 3rem;
+}
+
+.register-btn {
+    display: block;
+    padding: 1rem;
+    margin-top: 3rem;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--create-account-btn-color);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 500;
+    transition: all .2s ease-in;
+}
+
+.register-btn:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.1);
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <title>Create Account</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="register-form" class="register-form">
+            <h1>Register Now</h1>
+            <h2>It's quick and easy.</h2>
+            <div class="form-element">
+                <input type="text" id="name" placeholder="Name">
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <input type="text" id="surname" placeholder="Surname">
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <input type="text" id="email" placeholder="E-mail">
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <input type="text" id="phone-number" placeholder="Phone Number">
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <input type="password" id="password" placeholder="Password">
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <input type="password" id="confirm-password" placeholder="Confirm Password">
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <h3 class="date-of-birth-title">Date of Birth</h3>
+                <div class="date-of-birth-choice">
+                    <select name="day-of-birth" id="day-of-birth">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <select name="month-of-birth" id="month-of-birth">
+                        <option value="jan">Januray</option>
+                        <option value="feb">February</option>
+                        <option value="mar">March</option>
+                        <option value="apr">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+                        <option value="july">July</option>
+                        <option value="aug">August</option>
+                        <option value="sept">September</option>
+                        <option value="oct">October</option>
+                        <option value="nov">November</option>
+                        <option value="dec">December</option>
+                    </select>
+                    <select name="year-of-birth" id="year-of-birth">
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+                <div class="error-message hidden">Error</div>
+            </div>
+            <div class="form-element">
+                <h3 class="gender-title">Gender</h3>
+                <div class="gender-options">
+                    <div class="gender-button">
+                        <label for="woman">Woman</label>
+                        <input type="radio" name="gender" id="woman">
+                    </div>
+                    <div class="gender-button">
+                        <label for="man">Man</label>
+                        <input type="radio" name="gender" id="man">
+                    </div>
+                </div>
+                <div class="error-message hidden">Error</div>
+            </div>
+            <button type="submit" id="register-btn" class="register-btn">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>
