@@ -9,7 +9,7 @@ const email = document.getElementById('email');
 const phoneNumber = document.getElementById('phone-number');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
-const dateOfBirth = document.querySelector('.date-of-birth-choice');
+const dateOfBirthContainer = document.querySelector('.date-of-birth-choice');
 const dayOfBirth = document.getElementById('day-of-birth');
 const monthOfBirth = document.getElementById('month-of-birth');
 const yearOfBirth = document.getElementById('year-of-birth');
@@ -26,14 +26,14 @@ const phoneNumberRegex = new RegExp('^[0-9]{3}(-|\s)?[0-9]{3}(-|\s)?[0-9]{3}$');
 const passwordRegex = new RegExp('^((?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#\$%\^&\*\-_\+=])[a-zA-Z0-9!@#\$%\^&\*\-_\+=]{8,})$');
 // const passwordRegex = new RegExp('^((?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%\^&\*\(\)_\-+=\{\}\[\]:;\|\\<,>\.\?/])[a-zA-Z0-9!@#$%\^&\*\(\)_\-+=\{\}\[\]:;\|\\<,>\.\?\/]{8,})$');
 
-function createDaysList(select, minDay = 1, MaxDay = 31) {
+function createDaysListInSelect(select, minDay = 1, MaxDay = 31) {
     for (let i = minDay; i <= MaxDay; i++) {
         const newDay = `<option value="${i}">${i}</option>`;
         select.innerHTML += newDay;
     }
 }
 
-function createYearsList(select, minYear,
+function createYearsListInSelect(select, minYear,
     maxYear = new Date().getFullYear()) {
     for (let i = maxYear; i >= minYear; i--) {
         const newYear = `<option value="${i}">${i}</option>`;
@@ -55,7 +55,7 @@ function hideErrorMessage(input) {
     const formElement = input.parentElement;
     const error = formElement.querySelector('.error-message');
     error.classList.add('hidden');
-    error.innerText = "x";
+    error.innerText = "Error";
 }
 
 function showSuccess(input) {
@@ -64,12 +64,7 @@ function showSuccess(input) {
     hideErrorMessage(input);
 }
 
-function getFormElementName(input) {
-    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-
-function checkIfEmpty(input) {
+function checkIfInputIsEmpty(input) {
     if (input.value.length === 0) {
         return true;
     }
@@ -86,20 +81,18 @@ function checkIfInputIsValid(input, regex) {
 }
 
 function checkIfRadioIsChecked(arrayOfRadios) {
-    let result = false;
-    arrayOfRadios.forEach(function (radio) {
-        if (radio.checked) {
-            result = true;
-        }
-    });
-    return result;
+    for (let i = 0; i < arrayOfRadios.length; i++) {
+        if (arrayOfRadios[i].checked)
+            return true;
+    }
 
+    return false;
 }
 
 function checkIfIsDifferenceBeetweenYears(givenDate, difference) {
     let todayDate = new Date();
     let yearsDifference = todayDate.getFullYear() - givenDate.getFullYear();
-    if (yearsDifference >= 18) {
+    if (yearsDifference >= difference) {
         return true;
     }
     else {
@@ -114,7 +107,7 @@ function checkForm() {
     if (checkIfInputIsValid(name, nameRegex)) {
         showSuccess(name);
     }
-    else if (checkIfEmpty(name)) {
+    else if (checkIfInputIsEmpty(name)) {
         showError(name, "Type a name. Two-part name must be separated by a space.");
         shouldSend = false;
     }
@@ -127,7 +120,7 @@ function checkForm() {
     if (checkIfInputIsValid(surname, surnameRegex)) {
         showSuccess(surname);
     }
-    else if (checkIfEmpty(surname)) {
+    else if (checkIfInputIsEmpty(surname)) {
         showError(surname, "Type a surname. Two-part surname must be separated by a dash.");
         shouldSend = false;
     }
@@ -140,7 +133,7 @@ function checkForm() {
     if (checkIfInputIsValid(email, emailRegex)) {
         showSuccess(email);
     }
-    else if (checkIfEmpty(email)) {
+    else if (checkIfInputIsEmpty(email)) {
         showError(email, "Typa an email address.");
         shouldSend = false;
     }
@@ -153,7 +146,7 @@ function checkForm() {
     if (checkIfInputIsValid(phoneNumber, phoneNumberRegex)) {
         showSuccess(phoneNumber);
     }
-    else if (checkIfEmpty(phoneNumber)) {
+    else if (checkIfInputIsEmpty(phoneNumber)) {
         showError(phoneNumber, "Typa a phone number.");
         shouldSend = false;
     }
@@ -174,7 +167,7 @@ function checkForm() {
             shouldSend = false;
         }
     }
-    else if (checkIfEmpty(password)) {
+    else if (checkIfInputIsEmpty(password)) {
         showError(password, "Type a password. Minimum 8 characters, at least one uppercase letter, at least one lowercase letter, at least one number and at least one special character.");
         showError(confirmPassword, "Password is wrong.");
         shouldSend = false;
@@ -185,7 +178,7 @@ function checkForm() {
         shouldSend = false;
     }
 
-    // Check date (if at least 18 year)
+    // Check date (if at least requaired age)
     let day = dayOfBirth.value;
     let month = monthOfBirth.value;
     let year = yearOfBirth.value;
@@ -198,11 +191,11 @@ function checkForm() {
         monthOfBirth.classList.add("correct");
         yearOfBirth.classList.remove("incorrect");
         yearOfBirth.classList.add("correct");
-        hideErrorMessage(dateOfBirth);
+        hideErrorMessage(dateOfBirthContainer);
     }
     else {
         shouldSend = false;
-        const formElement = dateOfBirth.parentElement;
+        const formElement = dateOfBirthContainer.parentElement;
         const error = formElement.querySelector('.error-message');
         error.classList.remove('hidden');
         error.innerText = "You must be at least 18 years old.";
@@ -227,7 +220,9 @@ function checkForm() {
     }
 
     if (shouldSend) {
-        alert("Your data are correct. Registration was successful.");
+        setTimeout(function () {
+            alert("Your data are correct. Registration was successful.");
+        }, 500);
     }
 
 };
@@ -243,11 +238,12 @@ manBtn.addEventListener('click', function () {
     radio.checked = true;
 });
 
-// Main
-createDaysList(dayOfBirth);
-createYearsList(yearOfBirth, 1920);
-
 registerBtn.addEventListener('click', function (e) {
     e.preventDefault();
     checkForm();
 });
+
+// Main
+createDaysListInSelect(dayOfBirth);
+createYearsListInSelect(yearOfBirth, 1920);
+
