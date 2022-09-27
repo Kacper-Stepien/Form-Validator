@@ -9,6 +9,7 @@
     --success-color: #42b72a;
     --error-color: #ef233c;
     --header-color-text: #1977f3;
+    --border-radius: 0;
 }
 
 *,
@@ -37,13 +38,13 @@ body {
     background-color: var(--form-background);
     padding: 5rem 10rem;
     width: 40vw;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .register-form h1 {
     color: var(--header-color-text);
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 600;
 }
 
@@ -61,7 +62,7 @@ body {
     padding: 0.8rem;
     width: 100%;
     border: 2px solid #6c757d;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     outline: none;
 }
 
@@ -82,6 +83,14 @@ body {
     color: var(--error-color);
 }
 
+.correct {
+    border: 2px solid var(--success-color) !important;
+}
+
+.incorrect {
+    border: 2px solid var(--error-color) !important;
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -97,7 +106,7 @@ body {
     width: 100%;
     padding: 0.5rem;
     border: 2px solid #6c757d;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     outline: none;
 }
 
@@ -105,6 +114,7 @@ body {
 .date-of-birth-choice select:checked {
     border: 2px solid var(--header-color-text);
 }
+
 
 .date-of-birth-choice select:not(:last-child) {
     margin-right: 1rem;
@@ -118,13 +128,18 @@ body {
 
 .gender-button {
     font-size: 1.6rem;
-    padding: 1rem;
-    border-radius: 12px;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
     border: 2px solid #6c757d;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.gender-option:checked .gender-button {
+    background-color: var(--header-color-text);
+    padding: 5rem;
 }
 
 .gender-button:last-child {
@@ -135,6 +150,10 @@ body {
     width: 3rem;
 }
 
+.gender-button:hover {
+    cursor: pointer;
+}
+
 .register-btn {
     display: block;
     padding: 1rem;
@@ -143,7 +162,7 @@ body {
     margin: 0 auto;
     background-color: var(--create-account-btn-color);
     border: none;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     color: #fff;
     font-size: 1.6rem;
     font-weight: 500;
